@@ -5,3 +5,4 @@ Histórico de Alterações
 ^^^^^^^^^^^^^^^^^^
 * Criação do produto. [danilo.barbato]
 * Adiciona tile de Carrossel alimentado por coleção. [danilo.barbato]
+

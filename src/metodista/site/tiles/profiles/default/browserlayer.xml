@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<layers>
+  <layer
+      name="metodista.site.tiles"
+      interface="metodista.site.tiles.interfaces.IBrowserLayer"
+      />
+</layers>

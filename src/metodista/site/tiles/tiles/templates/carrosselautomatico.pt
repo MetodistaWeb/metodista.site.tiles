@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="collective.cover">
+
+<head>
+  <link rel="stylesheet" type="text/css"
+      tal:attributes="href string:${context/@@plone_portal_state/portal_url}/++resource++metodista.site.tiles/css/galleria.carrossel_theme.css" />
+  <script type="application/javascript" tal:content="structure view/init_js">
+  </script>
+</head>
+
+<body tal:define="is_empty view/is_empty">
+
+  <p tal:condition="python: is_empty and view.is_compose_mode()">
+    O carrossel está vazio; clique em adicionar conteúdo e faça o drag and drop de alguma coleção aqui.
+  </p>
+
+  <div id="" class="galleria slide cover-carousel-tile tile-content" tal:condition="not:is_empty"
+      tal:attributes="id string:galleria-${view/id}">
+    <tal:items repeat="item view/results">
+        <tal:item define="obj item/getObject">
+          <img tal:define="thumbnail python:view.thumbnail(obj);
+                           uuid python:view.get_uid(obj);
+                           type obj/portal_type;
+                           title obj/title;
+                           description obj/Description;
+                           url obj/absolute_url"
+               tal:condition="python:thumbnail and uuid"
+               tal:attributes="src thumbnail/url;
+                               width thumbnail/width;
+                               height thumbnail/height;
+                               data-link url;
+                               data-content-uuid uuid;
+                               data-content-type type;
+                               data-has-subitem string:False" />
+        </tal:item>
+    </tal:items>
+  </div>
+</body>
+</html>

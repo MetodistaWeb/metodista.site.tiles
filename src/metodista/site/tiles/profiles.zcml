@@ -1,0 +1,23 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:gs="http://namespaces.zope.org/genericsetup"
+    i18n_domain="metodista.site.tiles">
+
+    <!-- Profiles -->
+    <gs:registerProfile
+        name="default"
+        title="Produto de tiles: Instalação Inicial"
+        directory="profiles/default"
+        description="Instalação e configuração de Produto de tiles"
+        provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+    <gs:registerProfile
+        name="uninstall"
+        title="Produto de tiles: Remover"
+        directory="profiles/uninstall"
+        description="Remove configurações de Produto de tiles"
+        provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+
+</configure>

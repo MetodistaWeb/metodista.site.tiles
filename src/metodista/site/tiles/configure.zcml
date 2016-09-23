@@ -1,0 +1,18 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="metodista.site.tiles">
+
+    <includeDependencies package="." />
+
+    <include file="profiles.zcml" />
+    <include package=".tiles" />
+
+    <browser:resourceDirectory
+            name="metodista.site.tiles"
+            directory="static"
+    />
+
+</configure>

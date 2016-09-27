@@ -22,9 +22,7 @@ import random
 INIT_JS = """
             $(function() {{
                     Galleria.loadTheme('++resource++metodista.site.tiles/js/cover.carrossel.js');
-                    Galleria.run('#galleria-{0}', {
-                        height: 0.3531;
-                    })
+                    Galleria.run('#galleria-{0}')
             }});
 """
 

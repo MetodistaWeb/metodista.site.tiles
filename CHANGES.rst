@@ -1,6 +1,10 @@
 Histórico de Alterações
 ------------------------
 
+0.5.2 (unreleased)
+^^^^^^^^^^^^^^^^^^
+* Nada alterado ainda.
+
 0.5.1 (27-09-2016)
 ^^^^^^^^^^^^^^^^^^
 * Ajusta inicialização da galeria. [danilo.barbato]

@@ -1,9 +1,10 @@
 Histórico de Alterações
 ------------------------
 
-0.5.1 (unreleased)
+0.5.1 (27-09-2016)
 ^^^^^^^^^^^^^^^^^^
-* Nada alterado ainda.
+* Ajusta inicialização da galeria. [danilo.barbato]
+* Remove configuração de site. [danilo.barbato]
 
 0.5.0 (27-09-2016)
 ^^^^^^^^^^^^^^^^^^

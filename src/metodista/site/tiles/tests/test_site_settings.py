@@ -12,19 +12,13 @@ class SiteSettingsTestCase(unittest.TestCase):
         self.portal = self.layer['portal']
 
     def test_title(self):
-        self.assertTrue(self.portal.title.startswith('Produto de tiles'),
+        self.assertTrue(self.portal.title.startswith('Plone'),
                         'Title not applied')
-
-    def test_email_configs(self):
-        self.assertTrue(self.portal.email_from_address,
-                        'E-mail address not set')
-        self.assertTrue(self.portal.email_from_name,
-                        'E-mail name not set')
 
     def test_language_settings(self):
         languages = self.portal['portal_languages']
-        self.assertEqual(languages.use_combined_language_codes, 1,
+        self.assertEqual(languages.use_combined_language_codes, 0,
                          'Combined language code not supported')
 
-        self.assertEqual(languages.getDefaultLanguage(), 'pt-br',
+        self.assertEqual(languages.getDefaultLanguage(), 'en',
                          'Language not set')

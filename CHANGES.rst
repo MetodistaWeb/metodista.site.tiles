@@ -3,7 +3,7 @@ Histórico de Alterações
 
 0.5.2 (unreleased)
 ^^^^^^^^^^^^^^^^^^
-* Nada alterado ainda.
+* Cria testes para o tile de carrossel automático. [danilo.barbato]
 
 0.5.1 (27-09-2016)
 ^^^^^^^^^^^^^^^^^^

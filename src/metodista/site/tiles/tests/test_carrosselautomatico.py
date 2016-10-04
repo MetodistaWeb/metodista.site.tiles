@@ -117,3 +117,39 @@ class CarrosselAutomaticoTileTestCase(TestTileMixin, unittest.TestCase):
         self.assertEqual(len(items), 2)
         self.assertEqual(items[0].getId(), 'my-image')
         self.assertEqual(items[1].getId(), 'my-image-2')
+
+    def test_offset(self):
+        obj = self.portal['my-news-folder']['my-collection']
+        self.tile.populate_with_object(obj)
+
+        tile_conf = self.tile.get_tile_configuration()
+        tile_conf['offset']['offset'] = 1
+        self.tile.set_tile_configuration(tile_conf)
+
+        with api.env.adopt_roles(roles=['Manager']):
+
+            api.content.create(
+                type='Image',
+                title='my-image-2',
+                container=self.portal['my-news-folder']
+            ).setImage(generate_jpeg(50, 50))
+
+            api.content.create(
+                type='Image',
+                title='my-image-3',
+                container=self.portal['my-news-folder']
+            ).setImage(generate_jpeg(50, 50))
+
+        # Collection has three images and shows the final two.
+        items = self.tile.results()
+        self.assertEqual(len(items), 2)
+        self.assertEqual(items[0].getId(), 'my-image-2')
+        self.assertEqual(items[1].getId(), 'my-image-3')
+
+        # Add a size, so only one item is left.
+        tile_conf['number_to_show']['size'] = 1
+        self.tile.set_tile_configuration(tile_conf)
+
+        items = self.tile.results()
+        self.assertEqual(len(items), 1)
+        self.assertEqual(items[0].getId(), 'my-image-2')

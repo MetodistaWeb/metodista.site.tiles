@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from App.Common import package_home
 from plone.app.testing import PloneSandboxLayer
 from PIL import Image
 from plone import api
@@ -8,19 +7,7 @@ from plone.app.testing import IntegrationTesting
 from plone.app.testing import FunctionalTesting
 from StringIO import StringIO
 
-import os
 import random
-import unittest
-
-
-def loadFile(name, size=0):
-    """Load file from testing directory
-    """
-    path = os.path.join(package_home(globals()), 'tests/input', name)
-    fd = open(path, 'rb')
-    data = fd.read()
-    fd.close()
-    return data
 
 
 def generate_jpeg(width, height):
@@ -115,12 +102,3 @@ FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(FIXTURE,),
     name='metodista.site.tiles:Functional',
 )
-
-
-class BaseIntegrationTestCase(unittest.TestCase):
-
-    layer = INTEGRATION_TESTING
-
-    def setUp(self):
-        self.portal = self.layer['portal']
-        self.request = self.layer['request']

@@ -153,3 +153,36 @@ class CarrosselAutomaticoTileTestCase(TestTileMixin, unittest.TestCase):
         items = self.tile.results()
         self.assertEqual(len(items), 1)
         self.assertEqual(items[0].getId(), 'my-image-2')
+
+    def test_random_items(self):
+        obj = self.portal['my-news-folder']['my-collection']
+        self.tile.populate_with_object(obj)
+
+        with api.env.adopt_roles(roles=['Manager']):
+
+            api.content.create(
+                type='Image',
+                title='my-image-2',
+                container=self.portal['my-news-folder']
+            ).setImage(generate_jpeg(50, 50))
+
+            api.content.create(
+                type='Image',
+                title='my-image-3',
+                container=self.portal['my-news-folder']
+            ).setImage(generate_jpeg(50, 50))
+
+        # we need to compare lists of objects
+        ordered = [o for o in obj.results()]
+        results = [o for o in self.tile.results()]
+        # default behavior return results in order
+        self.assertEqual(results, ordered)
+
+        # now, return results in random order
+        self.tile.data['random'] = True
+        for i in range(0, 10):
+            results = [o for o in self.tile.results()]
+            if results != ordered:
+                return
+
+        self.fail('No random order after 10 attemps')

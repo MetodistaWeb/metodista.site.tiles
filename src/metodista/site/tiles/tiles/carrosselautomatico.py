@@ -193,10 +193,6 @@ class CarrosselAutomaticoTile(PersistentCoverTile):
                 scales = item.restrictedTraverse('@@images')
                 return scales.scale('image', scale)
 
-    def get_alt(self, obj):
-        """Return the alt attribute for the image in the obj."""
-        return obj.Description() or obj.Title()
-
     def get_uid(self, obj):
         return IUUID(obj, None)
 
@@ -226,8 +222,6 @@ class CarrosselAutomaticoTile(PersistentCoverTile):
             # the <div> is there and has some items in it.
             return ''
 
-        # return INIT_JS.format(
-        #    self.id, self.get_image_ratio, str(self.autoplay()).lower())
         return INIT_JS.format(self.id)
 
     @view.memoize
